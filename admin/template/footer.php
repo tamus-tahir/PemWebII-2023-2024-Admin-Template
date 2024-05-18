@@ -16,6 +16,8 @@
 
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- plugins JS Files -->
 <script src="<?= $base_url; ?>assets/plugins/apexcharts/apexcharts.min.js"></script>
 <script src="<?= $base_url; ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -28,6 +30,16 @@
 
 <!-- Template Main JS File -->
 <script src="<?= $base_url; ?>assets/js/main.js"></script>
+
+<script>
+    $('#form').parsley({
+        errorClass: 'is-invalid text-red',
+        successClass: 'is-valid',
+        errorsWrapper: '<span class="invalid-feedback"></span>',
+        errorTemplate: '<span></span>',
+        trigger: 'change'
+    });
+</script>
 
 </body>
 
