@@ -42,6 +42,12 @@
 
 <body>
 
+    <div id="pesan-berhasil" data-pesan="<?= isset($_SESSION['berhasil']) ? $_SESSION['berhasil'] : ""; ?>"></div>
+    <div id="pesan-gagal" data-pesan="<?= isset($_SESSION['gagal']) ? $_SESSION['gagal'] : ""; ?>"></div>
+
+    <?php unset($_SESSION['berhasil']) ?>
+    <?php unset($_SESSION['gagal']) ?>
+
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
 

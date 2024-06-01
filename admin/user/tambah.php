@@ -12,6 +12,14 @@ if (isset($_POST['submit'])) {
     $query = "INSERT INTO user VALUES (null, '$username', '$password','$nama', '$role', null)";
 
     mysqli_query($koneksi, $query);
+
+    if (mysqli_affected_rows($koneksi) > 0) {
+        $_SESSION['berhasil'] = 'Data Berhasil Ditambahkan';
+        redirectTo('admin/user');
+    } else {
+        $_SESSION['gagal'] = 'Data Gagal Ditambahkan';
+        redirectTo('admin/user/tambah.php');
+    }
 }
 
 ?>
