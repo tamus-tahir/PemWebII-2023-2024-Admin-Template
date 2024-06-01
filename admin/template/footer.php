@@ -58,6 +58,10 @@
             text: pesanGagal,
         });
     }
+
+    $('#upload').on('change', function(event) {
+        $('#preview').attr('src', URL.createObjectURL(event.target.files[0]))
+    })
 </script>
 
 </body>
