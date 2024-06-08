@@ -9,9 +9,10 @@ if (isset($_POST['submit'])) {
     $nama = $_POST['nama'];
     $role = $_POST['role'];
 
-    $foto = upload();
-    if (!$foto) {
-        redirectTo('admin/user/tambah.php');
+    if ($_FILES['foto']['error'] == 4) {
+        $foto = null;
+    } else {
+        $foto = upload('foto', ['jpg', 'png', 'jpeg'], 500, '../../assets/uploads/user/');
     }
 
     $query = "INSERT INTO user VALUES (null, '$username', '$password','$nama', '$role', '$foto')";

@@ -12,14 +12,14 @@ function redirectTo($url)
     echo "<script>window.location.href = '$base_url/$url';</script>";
 }
 
-function upload()
+function upload($fileName, $allowType, $maxSize, $move)
 {
-    $name = $_FILES['foto']['name'];
-    $size = $_FILES['foto']['size'];
+    $name = $_FILES[$fileName]['name'];
+    $size = $_FILES[$fileName]['size'];
     // bit ke kb
     $size  = round($size / 1000, 2);
-    $tmp_name = $_FILES['foto']['tmp_name'];
-    $error = $_FILES['foto']['error'];
+    $tmp_name = $_FILES[$fileName]['tmp_name'];
+    $error = $_FILES[$fileName]['error'];
 
     if ($error != 0) {
         $_SESSION['gagal'] = 'File Gagal Diupload';
@@ -27,25 +27,24 @@ function upload()
     }
 
     // verifikasi type file
-    $typeFile = ['jpg', 'png', 'jpeg'];
     $typeName = explode('.', $name);
     $typeName = strtolower(end($typeName));
 
     // lakukan pemeriksaan
-    if (!in_array($typeName, $typeFile)) {
+    if (!in_array($typeName, $allowType)) {
         $_SESSION['gagal'] = 'Tipe file tidak diizinkan';
         return false;
     }
 
     // verifikasi ukuran file
-    if ($size > 500) {
+    if ($size > $maxSize) {
         $_SESSION['gagal'] = 'Ukuran File terlalu besar';
         return false;
     }
 
     $newName = time() . '.' . $typeName;
 
-    move_uploaded_file($tmp_name, '../../assets/uploads/user/' . $newName);
+    move_uploaded_file($tmp_name, $move . $newName);
 
     return $newName;
 }

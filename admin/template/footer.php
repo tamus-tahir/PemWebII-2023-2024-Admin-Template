@@ -19,6 +19,12 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- data tables -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.js"></script>
+
 <!-- plugins JS Files -->
 <script src="<?= $base_url; ?>assets/plugins/apexcharts/apexcharts.min.js"></script>
 <script src="<?= $base_url; ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -62,6 +68,8 @@
     $('#upload').on('change', function(event) {
         $('#preview').attr('src', URL.createObjectURL(event.target.files[0]))
     })
+
+    new DataTable('#example');
 </script>
 
 </body>

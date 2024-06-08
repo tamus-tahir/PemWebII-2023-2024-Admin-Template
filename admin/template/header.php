@@ -28,6 +28,10 @@
     <link href="<?= $base_url; ?>assets/plugins/remixicon/remixicon.css" rel="stylesheet">
     <link href="<?= $base_url; ?>assets/plugins/simple-datatables/style.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.css">
+
+
     <!-- Template Main CSS File -->
     <link href="<?= $base_url; ?>assets/css/style.css" rel="stylesheet">
 
