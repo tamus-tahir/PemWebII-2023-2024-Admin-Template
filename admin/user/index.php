@@ -1,17 +1,6 @@
 <?php require '../template/header.php' ?>
 
-<?php
-
-$query = "SELECT * FROM user ORDER BY id_user DESC";
-$result = mysqli_query($koneksi, $query);
-
-$user = [];
-
-while ($data = mysqli_fetch_assoc($result)) {
-    $user[] = $data;
-}
-
-?>
+<?php $user = get("SELECT * FROM user ORDER BY id_user DESC"); ?>
 
 <div class="card shadow p-3">
     <h5>User</h5>
@@ -24,15 +13,15 @@ while ($data = mysqli_fetch_assoc($result)) {
     </div>
 
     <div class="table-responsive">
-        <table class="table table-striped table-bordered " id="example">
+        <table class="table table-striped table-bordered w-100" id="example">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Foto</th>
-                    <th scope="col">Aksi</th>
+                    <th class="text-center">#</th>
+                    <th class="text-center">Username</th>
+                    <th class="text-center">Nama</th>
+                    <th class="text-center">Role</th>
+                    <th class="text-center">Foto</th>
+                    <th class="text-center">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,18 +29,21 @@ while ($data = mysqli_fetch_assoc($result)) {
                 <?php $i = 1 ?>
                 <?php foreach ($user as $row) : ?>
                     <tr>
-                        <td><?= $i++; ?></td>
-                        <td><?= $row['username']; ?></td>
-                        <td><?= $row['nama']; ?></td>
-                        <td><?= $row['role'] == 1 ? 'Superadmin' : 'Admin'; ?></td>
-                        <td>
+                        <td class="text-center"><?= $i++; ?></td>
+                        <td class="text-center"><?= $row['username']; ?></td>
+                        <td class="text-start"><?= $row['nama']; ?></td>
+                        <td class="text-center"><?= $row['role'] == 1 ? 'Superadmin' : 'Admin'; ?></td>
+                        <td class="text-center">
                             <?php if ($row['foto']) : ?>
                                 <img src="<?= $base_url; ?>/assets/uploads/user/<?= $row['foto']; ?>" alt="<?= $row['nama']; ?>" width="70">
                             <?php else : ?>
                                 <img src="<?= $base_url; ?>assets/img/noprofil.png" alt="<?= $row['nama']; ?>" width="70">
                             <?php endif ?>
                         </td>
-                        <td></td>
+                        <td class="text-center text-nowrap">
+                            <a class="btn btn-warning me-1" href="<?= $base_url; ?>admin/user/ubah.php?id=<?= $row['id_user']; ?>" role="button"><i class='bx bx-edit-alt'></i></a>
+                            <a class="btn btn-danger" href="<?= $base_url; ?>admin/user/hapus.php?id=<?= $row['id_user']; ?>" role="button"><i class='bx bx-trash'></i></a>
+                        </td>
                     </tr>
                 <?php endforeach ?>
 

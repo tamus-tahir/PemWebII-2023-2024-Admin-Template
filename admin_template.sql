@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Jun 2024 pada 22.52
+-- Waktu pembuatan: 10 Jun 2024 pada 20.45
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -31,7 +31,7 @@ CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
   `username` varchar(128) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `nama` int(128) NOT NULL,
+  `nama` varchar(128) NOT NULL,
   `role` int(11) NOT NULL,
   `foto` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -41,8 +41,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `nama`, `role`, `foto`) VALUES
-(1, '12345678', '$2y$10$HVa49IQ4hVKPRoHUnaf5tO5FRptzIiu.SCRDQLJ5688exp9ew7RLa', 12345678, 1, '1717876836.jpg'),
-(2, '123123123', '$2y$10$DC4ov/vRaGSx0XH46IOpEeTTbV2CzantBxHCLFsyNXPK6pkxyOAQK', 123123123, 1, '');
+(1, '12345678', '$2y$10$HVa49IQ4hVKPRoHUnaf5tO5FRptzIiu.SCRDQLJ5688exp9ew7RLa', 'Brandon', 1, '1718044731.jpg'),
+(2, '123123123', '$2y$10$DC4ov/vRaGSx0XH46IOpEeTTbV2CzantBxHCLFsyNXPK6pkxyOAQK', 'Anton web', 2, '1718044370.jpg');
 
 --
 -- Indexes for dumped tables
@@ -62,7 +62,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

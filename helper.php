@@ -48,3 +48,23 @@ function upload($fileName, $allowType, $maxSize, $move)
 
     return $newName;
 }
+
+function get($query)
+{
+    global $koneksi;
+    $result = mysqli_query($koneksi, $query);
+
+    $row = [];
+
+    while ($data = mysqli_fetch_assoc($result)) {
+        $row[] = $data;
+    }
+
+    return $row;
+}
+
+function getWhere($query)
+{
+    global $koneksi;
+    return mysqli_fetch_assoc(mysqli_query($koneksi, $query));
+}
