@@ -65,11 +65,33 @@
         });
     }
 
+    $('#data-table').on('click', '.button-delete', function(e) {
+
+        e.preventDefault()
+        let href = $(this).attr('href')
+
+        Swal.fire({
+            title: "Anda yakin?",
+            text: "Data akan dihapus!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ya, hapus data!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.location.href = href
+            }
+        });
+    })
+
+
+
     $('#upload').on('change', function(event) {
         $('#preview').attr('src', URL.createObjectURL(event.target.files[0]))
     })
 
-    new DataTable('#example');
+    new DataTable('#data-table');
 </script>
 
 </body>

@@ -13,7 +13,7 @@
     </div>
 
     <div class="table-responsive">
-        <table class="table table-striped table-bordered w-100" id="example">
+        <table class="table table-striped table-bordered w-100" id="data-table">
             <thead>
                 <tr>
                     <th class="text-center">#</th>
@@ -42,7 +42,7 @@
                         </td>
                         <td class="text-center text-nowrap">
                             <a class="btn btn-warning me-1" href="<?= $base_url; ?>admin/user/ubah.php?id=<?= $row['id_user']; ?>" role="button"><i class='bx bx-edit-alt'></i></a>
-                            <a class="btn btn-danger" href="<?= $base_url; ?>admin/user/hapus.php?id=<?= $row['id_user']; ?>" role="button"><i class='bx bx-trash'></i></a>
+                            <a class="btn btn-danger button-delete" href="<?= $base_url; ?>admin/user/hapus.php?id=<?= $row['id_user']; ?>" role="button"><i class='bx bx-trash'></i></a>
                         </td>
                     </tr>
                 <?php endforeach ?>

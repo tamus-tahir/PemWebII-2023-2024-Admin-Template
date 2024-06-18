@@ -144,6 +144,12 @@
                     <span>User</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="<?= $base_url; ?>admin/pengaturan">
+                    <i class='bx bx-cog'></i>
+                    <span>Pengaturan</span>
+                </a>
+            </li>
 
         </ul>
 
