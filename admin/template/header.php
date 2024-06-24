@@ -1,4 +1,5 @@
 <?php require '../../helper.php' ?>
+<?php $pengaturan = getWhere("SELECT * FROM pengaturan WHERE id_pengaturan = 1 "); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,12 +9,13 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <title>Admin Template</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+    <meta content="<?= $pengaturan['description']; ?>" name="description">
+    <meta content="<?= $pengaturan['keyword']; ?>" name="keywords">
+    <meta content="<?= $pengaturan['author']; ?>" name="author">
 
     <!-- Favicons -->
-    <link href="<?= $base_url; ?>assets/img/favicon.png" rel="icon">
-    <link href="<?= $base_url; ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="<?= $base_url; ?>assets/img/<?= $pengaturan['logo']; ?>" rel="icon">
+    <link href="<?= $base_url; ?>assets/img/<?= $pengaturan['logo']; ?>" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -56,9 +58,9 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo d-flex align-items-center">
-                <img src="<?= $base_url; ?>assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">NiceAdmin</span>
+            <a href="<?= $base_url; ?>admin/dashboard" class="logo d-flex align-items-center">
+                <img src="<?= $base_url; ?>assets/img/<?= $pengaturan['logo']; ?>" alt="">
+                <span class="d-none d-lg-block"><?= $pengaturan['appname']; ?></span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->

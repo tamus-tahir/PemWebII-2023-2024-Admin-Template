@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Jun 2024 pada 21.48
+-- Waktu pembuatan: 24 Jun 2024 pada 19.55
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -42,7 +42,7 @@ CREATE TABLE `pengaturan` (
 --
 
 INSERT INTO `pengaturan` (`id_pengaturan`, `appname`, `logo`, `copyright`, `description`, `keyword`, `author`) VALUES
-(1, '', '', 'unitama', '', '', '');
+(1, 'Template Admin', '1719250495.png', '2024 || Tamus Tahir', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', 'php, css, js, bootstrap', 'Tamus Tahir');
 
 -- --------------------------------------------------------
 
@@ -96,7 +96,7 @@ ALTER TABLE `pengaturan`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
