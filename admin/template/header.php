@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Admin Template</title>
+    <title><?= $pengaturan['appname']; ?></title>
     <meta content="<?= $pengaturan['description']; ?>" name="description">
     <meta content="<?= $pengaturan['keyword']; ?>" name="keywords">
     <meta content="<?= $pengaturan['author']; ?>" name="author">
@@ -69,16 +69,23 @@
             <ul class="d-flex align-items-center">
 
                 <li class="nav-item dropdown pe-3">
-
+                    <?php
+                    $id = $_SESSION['id_user'];
+                    $akun = getWhere("SELECT * FROM user WHERE id_user = $id ");
+                    ?>
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="<?= $base_url; ?>assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                        <?php if ($akun['foto']) : ?>
+                            <img src="<?= $base_url; ?>/assets/uploads/user/<?= $akun['foto']; ?>" alt="<?= $akun['nama']; ?>" class="rounded-circle">
+                        <?php else : ?>
+                            <img src="<?= $base_url; ?>assets/img/noprofil.png" alt="<?= $akun['nama']; ?>" class="rounded-circle">
+                        <?php endif ?>
+                        <span class="d-none d-md-block dropdown-toggle ps-2"><?= $akun['nama']; ?></span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>Kevin Anderson</h6>
-                            <span>Web Designer</span>
+                            <h6><?= $akun['nama']; ?></h6>
+                            <span><?= $akun['role'] == 1 ? 'Superadmin' : 'Admin'; ?></span>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -115,7 +122,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Sign Out</span>
                             </a>

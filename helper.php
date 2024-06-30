@@ -6,10 +6,14 @@ $koneksi = mysqli_connect('localhost', 'root', '', 'admin_template');
 
 session_start();
 
-function redirectTo($url)
+function redirectTo($url = null)
 {
     global $base_url;
-    echo "<script>window.location.href = '$base_url/$url';</script>";
+    if ($url) {
+        echo "<script>window.location.href = '$base_url/$url';</script>";
+    } else {
+        echo "<script>window.location.href = '$base_url';</script>";
+    }
 }
 
 function upload($fileName, $allowType, $maxSize, $move)
