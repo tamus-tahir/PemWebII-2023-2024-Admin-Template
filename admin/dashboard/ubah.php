@@ -1,10 +1,8 @@
 <?php require '../template/header.php' ?>
-<?php cekSuperadmin() ?>
+
 <?php
 
-$id = $_GET['id'];
-
-$user = getWhere("SELECT * FROM user WHERE id_user = $id ");
+$user = $akun;
 
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
@@ -13,7 +11,7 @@ if (isset($_POST['submit'])) {
         $user = getWhere("SELECT * FROM user WHERE username = '$username'");
         if ($user) {
             $_SESSION['gagal'] = 'Data Gagal Ditambahkan, Username Sudah Digunakan';
-            redirectTo('admin/user');
+            redirectTo('admin/dashboard');
         }
     }
 
@@ -50,10 +48,10 @@ if (isset($_POST['submit'])) {
 
     if (mysqli_affected_rows($koneksi) > 0) {
         $_SESSION['berhasil'] = 'Data Berhasil Diubah';
-        redirectTo('admin/user');
+        redirectTo('admin/dashboard');
     } else {
         $_SESSION['gagal'] = 'Data Gagal Diubah';
-        redirectTo('admin/user/ubah.php?id=' . $id);
+        redirectTo('admin/dashboard');
     }
 }
 
@@ -112,7 +110,7 @@ if (isset($_POST['submit'])) {
         </div>
 
 
-        <a class="btn btn-warning" href="<?= $base_url; ?>admin/user" role="button">Cancel</a>
+        <a class="btn btn-warning" href="<?= $base_url; ?>admin/dashboard" role="button">Cancel</a>
         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
     </form>
 

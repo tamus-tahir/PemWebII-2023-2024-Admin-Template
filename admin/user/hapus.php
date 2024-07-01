@@ -1,7 +1,7 @@
 <?php
 
 require '../template/header.php';
-
+cekSuperadmin();
 $id = $_GET['id'];
 
 $user = getWhere("SELECT * FROM user WHERE id_user = $id ");

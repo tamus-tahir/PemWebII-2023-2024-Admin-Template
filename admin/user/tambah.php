@@ -1,9 +1,16 @@
 <?php require '../template/header.php' ?>
-
+<?php cekSuperadmin() ?>
 <?php
 
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
+
+    $user = getWhere("SELECT * FROM user WHERE username = '$username'");
+    if ($user) {
+        $_SESSION['gagal'] = 'Data Gagal Ditambahkan, Username Sudah Digunakan';
+        redirectTo('admin/user/tambah.php');
+    }
+
     $password = $_POST['password'];
     $password = password_hash($password, PASSWORD_DEFAULT);
     $nama = $_POST['nama'];

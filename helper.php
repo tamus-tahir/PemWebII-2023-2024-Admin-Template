@@ -14,6 +14,8 @@ function redirectTo($url = null)
     } else {
         echo "<script>window.location.href = '$base_url';</script>";
     }
+
+    exit;
 }
 
 function upload($fileName, $allowType, $maxSize, $move)
@@ -71,4 +73,29 @@ function getWhere($query)
 {
     global $koneksi;
     return mysqli_fetch_assoc(mysqli_query($koneksi, $query));
+}
+
+function getRole($param)
+{
+    if ($param == 1) {
+        return 'Superadmin';
+    }
+
+    return 'Admin';
+}
+
+
+function cekLogin()
+{
+    if (!$_SESSION['id_user']) {
+        redirectTo();
+    }
+}
+
+function cekSuperadmin()
+{
+    if ($_SESSION['role'] != 1) {
+        $_SESSION['gagal'] = 'Anda tidak memiliki akses';
+        redirectTo('admin/dashboard');
+    }
 }

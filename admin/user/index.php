@@ -1,6 +1,7 @@
 <?php require '../template/header.php' ?>
 
 <?php $user = get("SELECT * FROM user ORDER BY id_user DESC"); ?>
+<?php cekSuperadmin() ?>
 
 <div class="card shadow p-3">
     <h5>User</h5>
@@ -32,7 +33,7 @@
                         <td class="text-center"><?= $i++; ?></td>
                         <td class="text-center"><?= $row['username']; ?></td>
                         <td class="text-start"><?= $row['nama']; ?></td>
-                        <td class="text-center"><?= $row['role'] == 1 ? 'Superadmin' : 'Admin'; ?></td>
+                        <td class="text-center"><?= getRole($row['role']) ?></td>
                         <td class="text-center">
                             <?php if ($row['foto']) : ?>
                                 <img src="<?= $base_url; ?>/assets/uploads/user/<?= $row['foto']; ?>" alt="<?= $row['nama']; ?>" width="70">
